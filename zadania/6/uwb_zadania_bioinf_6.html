@@ -14657,9 +14657,9 @@ Gotoh global alignment algorithm
 <p>Element $i,j$-ty macierzy BLOSUM to punkty dopasowania aminokwasu oznaczonego literą $i$-tą do aminokwasu oznaczonego literą $j$-tą, według jakiegoś przyjętego porządku tych liter (wizualnie: wzdłuż wierszy i kolumn macierzy).</p>
 <p>W module <code>Bio.Align</code> pod atrybutem <code>.substitution_matrices</code> można znaleźć gotowe, standardowe macierze punktacji dla aminokwasów, m.in. macierze $PAM$ i $BLOSUM$. Macierz <code>BLOSUM62</code> jest często macierzą używaną standardowo w lokalnym dopasowywaniu sekwencji (m.in. w implementacjach algorytmu <strong>BLAST</strong>).</p>
 <p>Obiektowi klasy <code>PairwiseAligner</code> można podać jako atrybut własną macierz kosztów, m. in. macierze dostępne w atrybucie <code>.substitution_matrices</code> modułu <code>Bio.Align</code>.</p>
-<p>Proszę porównać wyniki dopasowania <strong>globalnego</strong> poznanym algorytmem służącym do tego celu, dla pary poniższych sekwencji aminokwasów, używając:</p>
+<p>Proszę porównać wyniki dopasowania <strong>globalnego</strong> poznanym algorytmem służącym do tego celu, dla pary poniższych sekwencji aminokwasów, używając liniowej kary za przerwę oraz (2 odrebne warianty do testu):</p>
 <ul>
-<li>liniowej kary za przerwę,</li>
+<li>stalych score'ow match i mismatch,</li>
 <li>macierzy <code>BLOSUM62</code>.</li>
 </ul>
 <p><strong>Wskazówka:</strong> Wynikiem działania <code>PairwiseAligner</code> jest lista obiektów klasy <code>Alignment</code>, opisujących dopasowanie. Proszę zaprezentować w kodzie, że Państwo rozumieją, gdzie w obiekcie <code>Alignment</code> mieszczą się istotne informacje wyjściowe, tj. samo dopasowanie (można wyprintować obiekt wynikowy) jak i wynik (licza punktów /<code>score</code>) (wybrać np. pierwszy obiekt z listy). Czy jedno z dopasowań wydaje się lepsze?.</p>
@@ -14676,7 +14676,7 @@ Gotoh global alignment algorithm
 <span class="n">blosum62</span> <span class="o">=</span> <span class="n">substitution_matrices</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;BLOSUM62&quot;</span><span class="p">)</span>
 <span class="n">global_alignerB</span><span class="o">=</span> <span class="c1">#proszę ustawić jak należy PairwiseAligner w mode=&#39;global&#39;, nie podawać score&#39;ów match i mismatch</span>
 <span class="c1">#(...)</span>
-<span class="n">global_alignerL</span><span class="o">=</span> <span class="c1">#ustawić liniową karę jak wcześniej</span>
+<span class="n">global_alignerL</span><span class="o">=</span> <span class="c1">#ustawić liniową karę ze stalym kosztem match i mismatch jak wcześniej</span>
 <span class="c1">#(...)</span>
 <span class="n">global_alignerL</span><span class="o">.</span><span class="n">gap_score</span><span class="o">=</span> <span class="n">my_gap_score</span>
 <span class="n">global_alignerB</span><span class="o">.</span><span class="n">substitution_matrix</span><span class="o">=</span><span class="n">blosum62</span> <span class="c1"># tu podajemy macierz która opisuje score&#39;y</span>
